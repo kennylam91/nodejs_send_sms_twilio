@@ -10,6 +10,7 @@ app.use(bodyParser.urlencoded({
 
 app.post('/send-sms', (request, response) => {
   const {phoneNumber, smsContent} = {...request.body}
+  console.log(phoneNumber + " + " + smsContent)
   console.log(`URL: ${request.url}`);
   twilio.sendSms(phoneNumber, smsContent).then(()=> {
     response.send({message: 'Your message was sent successful'})
